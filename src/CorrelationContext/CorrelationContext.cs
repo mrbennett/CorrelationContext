@@ -7,34 +7,35 @@ namespace CorrelationContext
     {
         #region Actions
 
-        public void Run(Action action)
+        public AnnotatedResult<NonReturningActionResult> Run(Action action)
         {
-            action();
+            //TODO: Any better way to do this?
+            return Time(() => { action(); return new NonReturningActionResult(); });
         }
 
-        public void Run<T>(Action<T> action, T arg1)
+        public AnnotatedResult<NonReturningActionResult> Run<T>(Action<T> action, T arg1)
         {
-            action(arg1);
+            return Time(() => { action(arg1); return new NonReturningActionResult(); });
         }
 
-        public void Run<T1, T2>(Action<T1, T2> action, T1 arg1, T2 arg2)
+        public AnnotatedResult<NonReturningActionResult> Run<T1, T2>(Action<T1, T2> action, T1 arg1, T2 arg2)
         {
-            action(arg1, arg2);
+            return Time(() => { action(arg1, arg2); return new NonReturningActionResult(); });
         }
 
-        public void Run<T1, T2, T3>(Action<T1, T2, T3> action, T1 arg1, T2 arg2, T3 arg3)
+        public AnnotatedResult<NonReturningActionResult> Run<T1, T2, T3>(Action<T1, T2, T3> action, T1 arg1, T2 arg2, T3 arg3)
         {
-            action(arg1, arg2, arg3);
+            return Time(() => { action(arg1, arg2, arg3); return new NonReturningActionResult(); });
         }
 
-        public void Run<T1, T2, T3, T4>(Action<T1, T2, T3, T4> action, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+        public AnnotatedResult<NonReturningActionResult> Run<T1, T2, T3, T4>(Action<T1, T2, T3, T4> action, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
-            action(arg1, arg2, arg3, arg4);
+            return Time(() => { action(arg1, arg2, arg3, arg4); return new NonReturningActionResult(); });
         }
 
-        public void Run<T1, T2, T3, T4, T5>(Action<T1, T2, T3, T4, T5> action, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
+        public AnnotatedResult<NonReturningActionResult> Run<T1, T2, T3, T4, T5>(Action<T1, T2, T3, T4, T5> action, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
-            action(arg1, arg2, arg3, arg4, arg5);
+            return Time(() => { action(arg1, arg2, arg3, arg4, arg5); return new NonReturningActionResult(); });
         }
 
         #endregion
