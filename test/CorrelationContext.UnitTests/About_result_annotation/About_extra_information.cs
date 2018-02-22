@@ -11,9 +11,9 @@ namespace CorrelationContext.UnitTests.About_result_annotation
             var context = new CorrelationContext();
 
             var annotatedResult = 
-                context.Run(x => { Thread.Sleep(3000); return x; }, "whereyouat");
+                context.Run(x => { Thread.Sleep(1000); return x; }, "whereyouat");
             
-            Assert.InRange(annotatedResult.TimeElapsed, 2800, 3200);
+            Assert.InRange(annotatedResult.TimeElapsed, 800, 1200);
         }
 
         [Fact]
@@ -22,9 +22,9 @@ namespace CorrelationContext.UnitTests.About_result_annotation
             var context = new CorrelationContext();
 
             var annotatedResult =
-                context.Run(x => Thread.Sleep(3000), "whereyouat");
+                context.Run(x => Thread.Sleep(1000), "whereyouat");
 
-            Assert.InRange(annotatedResult.TimeElapsed, 2800, 3200);
+            Assert.InRange(annotatedResult.TimeElapsed, 800, 1200);
         }
     }
 }
